@@ -183,3 +183,13 @@ form .btn input[type="submit"]{
   font-weight: 500;
   cursor: pointer;
 }
+
+.p-link {
+  color: blue;        
+  text-decoration: underline;
+  cursor: pointer;      
+}
+
+.p-link:hover {
+  color: darkblue;
+}
