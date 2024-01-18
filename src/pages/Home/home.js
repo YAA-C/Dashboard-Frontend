@@ -35,6 +35,10 @@ export const Home = () => {
     navigate("/auth");
   }
 
+  const displayCSV=(apikey)=>{
+    navigate("/displayCsv", { state: { apikey } });
+  }
+
   return (
     <>
         <div className='white-box'>
@@ -43,6 +47,7 @@ export const Home = () => {
               apikey?(<>
                 <h4>API key: {apikey}</h4>
                 <button className='btn btn-primary' onClick={modifyApiKey}>Update API key</button>
+                <button className='btn btn-info' onClick={()=>displayCSV(apikey)}>Display CSV data</button>
                 <button className='btn btn-danger' onClick={logout}>Log out</button>
               </>):(<>
                 <button className='btn btn-primary' onClick={modifyApiKey}>Create API key</button>

@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 
 import { Auth } from "./pages/Auth/Auth";
 import { Home } from "../src/pages/Home/home";
+import { DisplayCsv } from "./pages/DisplayCSV/displayCsv";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           }
         />
         <Route path="/auth" element={<Auth />} />
+        <Route
+          path="/displayCsv"
+          element={
+            <ProtectedRoute>
+              <DisplayCsv />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
