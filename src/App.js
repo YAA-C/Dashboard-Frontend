@@ -9,28 +9,52 @@ import {
 
 import Cookies from "js-cookie";
 
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { Auth } from "./pages/Auth/Auth";
-import { Home } from "../src/pages/Home/home";
+import { Profile } from "./pages/profile/profile";
 import { DisplayCsv } from "./pages/DisplayCSV/displayCsv";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Analysis } from "./pages/Analysis/Analysis";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<Auth />} />
+
         <Route
-          path="/"
+          path="/profile"
           element={
             <ProtectedRoute>
-              <Home />
+              <Profile />
             </ProtectedRoute>
           }
         />
-        <Route path="/auth" element={<Auth />} />
+
         <Route
           path="/displayCsv"
           element={
             <ProtectedRoute>
               <DisplayCsv />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/analysis"
+          element={
+            <ProtectedRoute>
+              <Analysis />
             </ProtectedRoute>
           }
         />
