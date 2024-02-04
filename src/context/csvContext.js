@@ -12,7 +12,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     axios
       .post("http://localhost:3001/mongoCsv/latest", {
-        apikey:"asfasfa"
+        apikey: "F_J6LWYUoKk.PDo5k/XqvBcVQjYh1uA",
       })
       .then((response) => {
         const parsedData = parseCsv(response.data.content);
