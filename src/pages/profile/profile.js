@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./profile.css";
 import { Logout } from "../../components/Logout";
@@ -7,7 +7,7 @@ import { Logout } from "../../components/Logout";
 export const Profile = () => {
   const [username, setUsername] = useState("");
   const [apikey, setApiKey] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -53,14 +53,14 @@ export const Profile = () => {
               Dashboard
             </Link>
             <div className="nav-item dropdown" style={{ margin: "2vh" }}>
-              <a
+              <span
                 className="nav-link dropdown-toggle"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 <i className="profile-size bi bi-person-circle"></i>
-              </a>
+              </span>
               <ul className="dropdown-menu">
                 <li>
                   <div className="dropdown-item">

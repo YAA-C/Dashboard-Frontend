@@ -35,14 +35,14 @@ const DashboardContent = () => {
         <h4 style={{ margin: "2vh" }}>Welcome </h4>
         {/* NAVBAR THINGS */}
         <div className="nav-item dropdown" style={{ margin: "2vh" }}>
-          <a
+          <span
             className="nav-link dropdown-toggle"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <i className="profile-size bi bi-person-circle"></i>
-          </a>
+          </span>
           <ul className="dropdown-menu">
             <li>
               <Link to={"/profile"} className="dropdown-item">
