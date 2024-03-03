@@ -20,6 +20,7 @@ export const PieChart = ({ labels, data }) => {
     plugins: {
       legend: {
         position: 'top', // Align legend to the top
+        align: 'end', // Align legend to the end (right)
         labels: {
           color: 'black' // Adjust legend font color if needed
         }
@@ -30,6 +31,6 @@ export const PieChart = ({ labels, data }) => {
   return (
     <div>
       <Pie data={chartData} options={chartOptions} height={1000} width={500} />
-    </div>
-  );
+    </div>
+  );
 };

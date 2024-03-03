@@ -4,7 +4,7 @@ import "../Dashboard/Dashboard.css";
 
 import { BarChart } from "../charts/bar";
 import { Histogram } from "../charts/histogram";
-import { PieChart } from "../charts/pie";
+import { PieChart } from "../charts/pie_changes";
 
 export const Analysis = () => {
   return (
