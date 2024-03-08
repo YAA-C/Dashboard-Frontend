@@ -21,8 +21,9 @@ export const BarChart = ({ labels, data }) => {
     plugins: {
       legend: {
         position: 'top', // Align legend to the top
+        align: 'end', // Align legend to the end (right)
         labels: {
-          color: 'rgb(75,192,192)' // Adjust legend font color if needed
+          color: 'rgba(255, 255, 255, 1)' // Bright white legend font color
         }
       }
     },
@@ -30,8 +31,26 @@ export const BarChart = ({ labels, data }) => {
       y: {
         type: "linear",
         beginAtZero: true,
+        ticks: {
+          color: 'rgba(255, 255, 255, 1)' // Bright white y-axis tick color
+        },
+        title: {
+          display: true,
+          text: 'Value',
+          color: 'rgba(255, 255, 255, 1)' // Bright white y-axis label color
+        }
       },
-    },
+      x: {
+        title: {
+          display: true,
+          text: 'Category',
+          color: 'rgba(255, 255, 255, 1)' // Bright white x-axis label color
+        },
+        ticks: {
+          color: 'rgba(255, 255, 255, 1)' // Bright white x-axis tick color
+        }
+      }
+    }
   };
 
   return (

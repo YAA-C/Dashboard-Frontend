@@ -22,7 +22,7 @@ export const PieChart = ({ labels, data }) => {
         position: 'top', // Align legend to the top
         align: 'end', // Align legend to the end (right)
         labels: {
-          color: 'black' // Adjust legend font color if needed
+          color: 'rgba(255, 255, 255, 1)' // Bright white legend font color
         }
       }
     }

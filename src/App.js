@@ -26,36 +26,36 @@ function App() {
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
+             <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
 
         <Route
           path="/displayCsv"
           element={
-            <ProtectedRoute>
+             <ProtectedRoute>
               <DisplayCsv />
-            </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
 
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
+             <ProtectedRoute>
               <Dashboard />
-            </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
 
         <Route
           path="/analysis"
           element={
-            // <ProtectedRoute>
+             //<ProtectedRoute>
               <Analysis />
-            // </ProtectedRoute>
+             //</ProtectedRoute>
           }
         />
       </Routes>

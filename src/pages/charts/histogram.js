@@ -18,6 +18,15 @@ export const Histogram = ({ hist, edges }) => {
   };
 
   const chartOptions = {
+    plugins: {
+      legend: {
+        position: 'top', // Align legend to the top
+        align: 'end', // Align legend to the end (right)
+        labels: {
+          color: 'rgba(75, 192, 192, 1)' // Adjust legend font color if needed
+        }
+      }
+    },
     scales: {
       x: {
         type: "linear",
@@ -45,4 +54,3 @@ export const Histogram = ({ hist, edges }) => {
     </div>
   );
 };
-

@@ -21,8 +21,9 @@ export const Histogram = ({ hist, edges }) => {
     plugins: {
       legend: {
         position: 'top', // Align legend to the top
+        align: 'end', // Align legend to the end (right)
         labels: {
-          color: 'rgba(75, 192, 192, 1)' // Adjust legend font color if needed
+          color: 'rgba(255, 255, 255, 1)' // Bright white legend font color
         }
       }
     },
@@ -33,23 +34,38 @@ export const Histogram = ({ hist, edges }) => {
         title: {
           display: true,
           text: "Pitch",
+          color: 'rgba(255, 255, 255, 1)' // Bright white x-axis label color
         },
+        ticks: {
+          color: 'rgba(255, 255, 255, 1)' // Bright white x-axis tick color
+        }
       },
       y: {
-        type: "logarithmic", // Set y-axis scale to logarithmic
+        type: "logarithmic",
         beginAtZero: true,
         title: {
           display: true,
           text: "Count",
+          color: 'rgba(255, 255, 255, 1)' // Bright white y-axis label color
         },
+        ticks: {
+          callback: function (value, index, values) {
+            if (value === 1 || value === 10 || value === 100 || value === 1000) {
+              return value;
+            }
+            return null;
+          },
+          color: 'rgba(255, 255, 255, 1)' // Bright white y-axis tick color
+        }
       },
     },
   };
 
   return (
     <div>
-      <h1>Histogram of Pitch</h1>
+      <h1 style={{color: 'rgba(255, 255, 255, 1)'}}>Histogram of Pitch</h1>
       <Bar data={chartData} options={chartOptions} height={500} width={1000} />
-    </div>
-  );
+    </div>
+  );
 };
+

@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import "../Dashboard/Dashboard.css";
+import { Chart, registerables } from 'chart.js';
+
 // import { DataProvider, useData } from "../../context/csvContext";
 
-import { BarChart } from "../charts/bar";
-import { Histogram } from "../charts/histogram";
+import { BarChart } from "../charts/bar_changes";
+import { Histogram } from "../charts/logarithmicscale_histogram";
 import { PieChart } from "../charts/pie_changes";
 
 export const Analysis = () => {
+  Chart.register(...registerables);
   return (
     // <DataProvider>
     <AnalysisContent />
