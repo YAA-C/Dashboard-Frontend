@@ -1,17 +1,158 @@
-.landing-page {
-    height: 100vh;
-    width: 100vw;
-    font-size: 5vh;
-    background-color: white;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.LandingPage-main {
+
+    background-image: url("images/img13.png"); 
+     background-position: center; 
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    /* border: 1px solid aliceblue */
+
+
 }
 
-.increase {
-    height: 6vh;
-    width: 10vw;
-    font-weight: bolder;
+.LandingPage-divbody{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+
+
+}
+
+.LandingPage-quote {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    /* font-family: 'Times New Roman', Times, serif; */
+    /* font-family: "Roboto", sans-serif; */
+    font-family: "Anta", sans-serif;
+    font-weight: 650;
+    top: 55%;
+    left: 180px;
+    opacity: 100%;
+}
+
+.LandingPage-btn {
+    position: absolute;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: "Roboto Bold 700", sans-serif;
+    font-size: 20px;
+    padding: 3px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: flex;
+    color: white;
+    background-color: red;
+    top: 7%;
+    right: 3.5%;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+/* .photo {
+    height: 644px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: black;
+    width: 100%;
+    opacity: 40%;
+} */
+
+.LandingPage-information {
+    background-color: rgb(6, 6, 6);
+    /* background-color: black; */
+    position: relative;
+    height: 700px;
+    /* border: 1px solid aliceblue */
+
+}
+
+.LandingPage-tablecard {
+    position: absolute;
+    border: 1px solid aliceblue;
+    background-color: rgb(35, 35, 35);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4); */
+    transition: 0.3s;
+    border-radius: 12px;
+    width: 45%;
+    height: 550px;
+    right: 10px;
+    margin: 2%;
+}
+.LandingPage-tablecard:hover{
+    box-shadow: 0 0px 8px 8px rgba(187, 185, 185, 0.303);
+}
+
+.LandingPage-tablecreation{
+    padding: 4%;
+}
+th{
+    text-align: center;
+    vertical-align: middle;
+}
+td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.LandingPage-introcard {
+    border: 1px solid aliceblue;
+    background-color: rgb(35, 35, 35);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4); */
+    /* box-shadow: 0 0px 90px 33px rgba(0, 0, 0, 0.4); */
+    transition: 0.3s;
+    position: absolute;
+    border-radius: 12px;
+    width: 46%;
+    height: 550px;
+    padding: 1%;
+    margin: 2%;
+}
+
+.LandingPage-introcard:hover {
+    /* box-shadow: 0 8px 16px 0 rgba(233, 4, 4, 0.829); */
+    box-shadow: 0 0px 8px 8px rgba(187, 185, 185, 0.303);
+    /* box-shadow: 0 0px 90px 33px rgba(0, 0, 0, 0.4); */
+}
+
+.LandingPage-heading {
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 50px;
+    /* font-family: "Roboto Bold 700", sans-serif; */
+    font-family: "Poppins", sans-serif;
+    margin-left: 22%;
+    padding: 2%;
+    margin-top: 0%;
+
+}
+.LandingPage-heading2 {
+    color: aliceblue;
+    font-weight: 700;
+    font-size: 50px;
+    /* font-family: "Roboto Bold 700", sans-serif; */
+    font-family: "Poppins", sans-serif;
+    margin-left: 22%;
+    padding: 2%;
+    margin-top: 2%;
+
+}
+
+.LandingPage-paraone {
+    color: aliceblue;
+    padding: 2%;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    /* font-family: "Roboto thin", sans-serif; */
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    width: fit-content;
+    text-align: justify;
+    line-height: 25px;
+
+
 }
