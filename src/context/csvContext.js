@@ -11,8 +11,13 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     axios
+      .post("http://localhost:3001/user/getUser", {
+        id: window.localStorage.getItem("userID"),
+      })
+      .then((res) => {
+        axios
       .post("http://localhost:3001/mongoCsv/latest", {
-        apikey: "F_J6LWYUoKk.PDo5k/XqvBcVQjYh1uA",
+        apikey:res.data.user.apikey,
       })
       .then((response) => {
         const parsedData = parseCsv(response.data.content);
@@ -22,6 +27,10 @@ export const DataProvider = ({ children }) => {
       .catch((error) => {
         setError(error.message);
         setLoading(false);
+      });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
