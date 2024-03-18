@@ -47,7 +47,7 @@ export const Auth = () => {
             domain: "localhost",
           });
           window.localStorage.setItem("userID", res.data.userId);
-          navigate("/profile");
+          navigate("/dashboard");
         } else {
           alert(res.data.message);
         }

@@ -38,9 +38,6 @@ export const Profile = () => {
       });
   };
 
-  // const displayCSV = (apikey) => {
-  //   navigate("/displayCsv", { state: { apikey } });
-  // };
 
   return (
     <>
