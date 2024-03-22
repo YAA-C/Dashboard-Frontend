@@ -12,7 +12,6 @@ import Cookies from "js-cookie";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { Auth } from "./pages/Auth/Auth";
 import { Profile } from "./pages/profile/profile";
-import { DisplayCsv } from "./pages/DisplayCSV/displayCsv";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Analysis } from "./pages/Analysis/Analysis";
 
@@ -28,15 +27,6 @@ function App() {
           element={
             <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/displayCsv"
-          element={
-            <ProtectedRoute>
-              <DisplayCsv />
             </ProtectedRoute>
           }
         />
