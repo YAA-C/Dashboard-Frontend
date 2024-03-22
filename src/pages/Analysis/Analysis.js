@@ -4,9 +4,9 @@ import { Chart, registerables } from 'chart.js';
 
 // import { DataProvider, useData } from "../../context/csvContext";
 
-import { BarChart } from "../charts/bar_changes";
-import { Histogram } from "../charts/logarithmicscale_histogram";
-import { PieChart } from "../charts/pie_changes";
+import { BarChart } from "../charts/bar";
+import { Histogram } from "../charts/histogram";
+import { PieChart } from "../charts/pie";
 
 export const Analysis = () => {
   Chart.register(...registerables);
@@ -136,7 +136,7 @@ const AnalysisContent = () => {
         <PieChart labels={sixthLabel} data={sixthData} />
 
         <h2>Q. No. 7</h2>
-        <Histogram hist={hist} edges={edges} />
+        <Histogram data={hist} labels={edges} />
 
         <h2>Q. No. 8</h2>
         <BarChart labels={eightLabel} data={eightData} />

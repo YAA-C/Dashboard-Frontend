@@ -1,9 +1,9 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-export const Histogram = ({ hist, edges }) => {
+export const Histogram = (props) => {
   const chartData = {
-    labels: edges,
+    labels: props.labels,
     datasets: [
       {
         label: "Count",
@@ -12,7 +12,7 @@ export const Histogram = ({ hist, edges }) => {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(75, 192, 192, 0.6)",
         hoverBorderColor: "rgba(75, 192, 192, 1)",
-        data: hist,
+        data: props.data,
       },
     ],
   };
@@ -20,12 +20,13 @@ export const Histogram = ({ hist, edges }) => {
   const chartOptions = {
     plugins: {
       legend: {
-        position: 'top', // Align legend to the top
+        display: true,
+        position: 'top', // Position legend at the top
         align: 'end', // Align legend to the end (right)
         labels: {
-          color: 'rgba(75, 192, 192, 1)' // Adjust legend font color if needed
+          color: 'rgba(255, 255, 255, 1)' // Bright white legend font color
         }
-      }
+      },
     },
     scales: {
       x: {
@@ -34,7 +35,11 @@ export const Histogram = ({ hist, edges }) => {
         title: {
           display: true,
           text: "Pitch",
+          color: "rgba(255, 255, 255, 1)" // Bright white color for x-axis title
         },
+        ticks: {
+          color: "rgba(255, 255, 255, 1)" // Bright white color for x-axis ticks
+        }
       },
       y: {
         type: "logarithmic",
@@ -42,15 +47,49 @@ export const Histogram = ({ hist, edges }) => {
         title: {
           display: true,
           text: "Count",
+          color: "rgba(255, 255, 255, 1)" // Bright white color for y-axis title
         },
+        ticks: {
+          callback: function (value, index, values) {
+            if (value === 1 || value === 10 || value === 100 || value === 1000) {
+              return value;
+            }
+            return null;
+          },
+          color: 'rgba(255, 255, 255, 1)' // Bright white color for y-axis ticks
+        }
       },
     },
   };
 
   return (
-    <div>
-      <h1>Histogram of Pitch</h1>
-      <Bar data={chartData} options={chartOptions} height={500} width={1000} />
+    <div
+      style={{
+        width: "30vw",
+        border: "1px solid #ccc", // Add border
+        borderRadius: "12px", // Add border radius
+        padding: "1px", // Add padding
+        marginBottom: "20px", // Add margin bottom for spacing
+      }}
+    >
+      <div
+        style={{
+          height: "20%",
+          backgroundColor: "#ffffff20",
+          padding: "10px",
+          borderBottom: "1px solid #ccc",
+        }}
+      >
+        <h3 style={{ margin: 0, color: "black" }}>Histogram </h3> {/* Title Text */}
+      </div>
+      <div style={{ height: "calc(80% - 40px)", padding: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}> {/* Adjust height and padding */}
+        <Bar
+          data={chartData}
+          options={chartOptions}
+          height={300} // Adjust height as needed
+          width={300} // Adjust width as needed
+        />
+      </div>
     </div>
   );
 };
