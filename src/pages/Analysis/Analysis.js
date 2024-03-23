@@ -73,8 +73,8 @@ const AnalysisContent = () => {
 
   const secondData = [251, 91, 81, 40, 16, 13, 8, 2];
 
-  const thirdLabel = ["ar", "pistol", "sniper", "smg"];
-  const thirdData = [13892.0, 5225.0, 3089.0, 2964.0];
+  const thirdLabel = ["ar", "pistol", "sniper", "smg","knife"];
+  const thirdData = [13892.0, 5225.0, 3089.0, 2964.0, 1000.0];
 
   const fourthLabel = ["No Movement", "Crouching"];
   const fourthData = [26349.0, 11632.0];

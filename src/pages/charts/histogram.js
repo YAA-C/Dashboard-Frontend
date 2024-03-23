@@ -66,7 +66,15 @@ export const Histogram = (props) => {
     <div
       style={{
         width: "30vw",
-        border: "1px solid #ccc", // Add border
+        height: "30vw", // 1:1 aspect ratio for the outer square box
+        minWidth:"320px",
+        minHeight:"320px",
+        backgroundColor: "grey",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "2px solid #ccc", // Add border
         borderRadius: "12px", // Add border radius
         padding: "1px", // Add padding
         marginBottom: "20px", // Add margin bottom for spacing
@@ -74,20 +82,32 @@ export const Histogram = (props) => {
     >
       <div
         style={{
-          height: "20%",
+          width: "100%",
+          height: "calc(25% - 2px)", // 1:4 aspect ratio for the inner upper rectangular box
           backgroundColor: "#ffffff20",
           padding: "10px",
-          borderBottom: "1px solid #ccc",
+          borderBottom: "2px solid #ccc",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center"
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Histogram </h3> {/* Title Text */}
+        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3> {/* Title Text */}
       </div>
-      <div style={{ height: "calc(80% - 40px)", padding: "20px", display: "flex", justifyContent: "center", alignItems: "center" }}> {/* Adjust height and padding */}
+      <div
+        style={{
+          width: "100%",
+          height: "calc(75% - 2px)", // 3:4 aspect ratio for the chart box
+          padding: "5%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Bar
           data={chartData}
           options={chartOptions}
-          height={300} // Adjust height as needed
-          width={300} // Adjust width as needed
+          style={{ height: "100%", width: "100%" }}
         />
       </div>
     </div>
