@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Auth.css";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import Cookies from "js-cookie";
 
 export const Auth = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -10,8 +11,21 @@ export const Auth = () => {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [, setCookies] = useCookies(["access_token"]);
-
+  const [isSignIN, setIsSignIN] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (Cookies.get("access_token")) {
+      setIsSignIN(true);
+    }
+    // console.log(isSignIN)
+
+    if (isSignIN) {
+      navigate("/dashboard")
+    }
+  },[isSignIN,navigate])
+
+  
 
   const cleared = () => {
     setUsername("");
@@ -79,7 +93,7 @@ export const Auth = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper" style={{border:"3px solid black"}}>
       <div className="title-text">
         <div className={`title ${isLoginForm ? "login" : "signup"}`}>
           {isLoginForm ? "Login Form" : "Signup Form"}

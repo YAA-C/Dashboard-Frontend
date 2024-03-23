@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "./LandingPage.css";
 import yaacs from './images/logo3.png'
