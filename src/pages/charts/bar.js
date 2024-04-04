@@ -27,12 +27,7 @@ export const BarChart = (props) => {
   const chartOptions = {
     plugins: {
       legend: {
-        position: "top",
-        align: "end",
-        labels: {
-          color: "rgba(255, 255, 255, 1)", // Bright white color for legend labels
-          textAlign: "left", 
-        },
+        display: false // Hide legend from chart
       },
     },
     scales: {
@@ -64,14 +59,14 @@ export const BarChart = (props) => {
   return (
     <div
       style={{
-        width: "30vw",
-        height: "30vw", // 1:1 aspect ratio for the outer square box
+        width: "48vw", // 5/8 of 30vw
+        height: "30vw", // 5:8 aspect ratio of 30vw
         minWidth: "320px",
-        minHeight: "320px",
+        minHeight: "512px",
         backgroundColor: "grey",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        flexDirection: "column", 
+        justifyContent: "flex-start", // Align items at the start of the cross axis (vertical axis)
         alignItems: "center",
         border: "2px solid #ccc", // Add border
         borderRadius: "12px", // Add border radius
@@ -82,7 +77,7 @@ export const BarChart = (props) => {
       <div
         style={{
           width: "100%",
-          height: "calc(25% - 2px)", // 1:4 aspect ratio for the inner upper rectangular box
+          height: "calc(1/8*100% - 2px)", // 1:8 aspect ratio for the inner title box
           backgroundColor: "#ffffff20",
           padding: "10px",
           borderBottom: "2px solid #ccc",
@@ -91,24 +86,66 @@ export const BarChart = (props) => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Bar Chart</h3>{" "}
-        {/* Title Text */}
+        <h3 style={{ margin: 0, color: "black" }}>Bar Chart</h3>{" "} {/* Title Text */}
       </div>
       <div
         style={{
           width: "100%",
-          height: "calc(75% - 2px)", // 3:4 aspect ratio for the chart box
-          padding: "5%",
+          height: "calc(6/8*100% - 2px)", // 4:6 aspect ratio for the chart and legends box
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "stretch", // Make the legend box stretch vertically
+          flexDirection: "row"
         }}
       >
-        <Bar
-          data={chartData}
-          options={chartOptions}
-          style={{ height: "100%", width: "100%" }}
-        />
+        <div
+          style={{
+            width: "calc(4/6*100% - 2px)", // 4:6 aspect ratio for the chart
+            height: "100%",
+            padding: "5%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Bar
+            data={chartData}
+            options={chartOptions}
+            style={{ height: "100%", width: "100%" }}
+          />
+        </div>
+        <div
+          style={{
+            width: "calc(2/6*100% - 2px)", // 4:2 aspect ratio for the legends box
+            backgroundColor: "#ffffff20",
+            padding: "10px",
+            borderLeft: "2px solid #ccc",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            fontSize: "14px", // Set a maximum font size
+            overflow: "auto", // Enable scrolling
+            scrollbarWidth: "thin", // Thin scrollbar
+            scrollbarColor: "rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1)", // Scrollbar color
+            height: "118%", // Extend to the bottom
+          }}
+        >
+          {props.labels.map((label, index) => (
+            <div key={index} style={{ marginBottom: "5px" }}>
+              <div
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  backgroundColor: colorScale[index],
+                  marginRight: "5px",
+                  display: "inline-block",
+                }}
+              ></div>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

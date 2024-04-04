@@ -20,12 +20,7 @@ export const Histogram = (props) => {
   const chartOptions = {
     plugins: {
       legend: {
-        display: true,
-        position: 'top', // Position legend at the top
-        align: 'end', // Align legend to the end (right)
-        labels: {
-          color: 'rgba(255, 255, 255, 1)' // Bright white legend font color
-        }
+        display: false, // Remove legend from the chart box
       },
     },
     scales: {
@@ -35,11 +30,11 @@ export const Histogram = (props) => {
         title: {
           display: true,
           text: "Pitch",
-          color: "rgba(255, 255, 255, 1)" // Bright white color for x-axis title
+          color: "rgba(255, 255, 255, 1)", // Bright white color for x-axis title
         },
         ticks: {
-          color: "rgba(255, 255, 255, 1)" // Bright white color for x-axis ticks
-        }
+          color: "rgba(255, 255, 255, 1)", // Bright white color for x-axis ticks
+        },
       },
       y: {
         type: "logarithmic",
@@ -47,7 +42,7 @@ export const Histogram = (props) => {
         title: {
           display: true,
           text: "Count",
-          color: "rgba(255, 255, 255, 1)" // Bright white color for y-axis title
+          color: "rgba(255, 255, 255, 1)", // Bright white color for y-axis title
         },
         ticks: {
           callback: function (value, index, values) {
@@ -56,8 +51,8 @@ export const Histogram = (props) => {
             }
             return null;
           },
-          color: 'rgba(255, 255, 255, 1)' // Bright white color for y-axis ticks
-        }
+          color: "rgba(255, 255, 255, 1)", // Bright white color for y-axis ticks
+        },
       },
     },
   };
@@ -65,10 +60,10 @@ export const Histogram = (props) => {
   return (
     <div
       style={{
-        width: "30vw",
-        height: "30vw", // 1:1 aspect ratio for the outer square box
-        minWidth:"320px",
-        minHeight:"320px",
+        width: "48vw", // 5/8 of 30vw
+        height: "30vw", // 4:6 aspect ratio for the inner chart box
+        minWidth: "320px",
+        minHeight: "384px",
         backgroundColor: "grey",
         display: "flex",
         flexDirection: "column",
@@ -83,32 +78,65 @@ export const Histogram = (props) => {
       <div
         style={{
           width: "100%",
-          height: "calc(25% - 2px)", // 1:4 aspect ratio for the inner upper rectangular box
+          height: "calc(1/8*100% - 2px)", // 1:8 aspect ratio for the upper title box
           backgroundColor: "#ffffff20",
           padding: "10px",
           borderBottom: "2px solid #ccc",
           display: "flex",
           justifyContent: "flex-start",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3> {/* Title Text */}
+        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3>{" "}
+        {/* Title Text */}
       </div>
       <div
         style={{
           width: "100%",
-          height: "calc(75% - 2px)", // 3:4 aspect ratio for the chart box
-          padding: "5%",
+          height: "calc(7/8*100% - 2px)", // 7:8 aspect ratio for the chart and legend box
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <Bar
-          data={chartData}
-          options={chartOptions}
-          style={{ height: "100%", width: "100%" }}
-        />
+        <div
+          style={{
+            width: "calc(6/8*100% - 2px)", // 5:8 aspect ratio for the chart box
+            height: "100%",
+            padding: "5%",
+          }}
+        >
+          <Bar
+            data={chartData}
+            options={chartOptions}
+            style={{ height: "100%", width: "100%" }}
+          />
+        </div>
+        <div
+          style={{
+            width: "calc(3/8*100% - 2px)", // 7:2 aspect ratio for the legend box
+            height: "100%",
+            backgroundColor: "#ffffff20",
+            padding: "10px",
+            borderLeft: "2px solid #ccc",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            fontSize: "14px", // Set a maximum font size
+          }}
+        >
+          <div style={{ marginBottom: "5px", color: "white" }}>
+            <div
+              style={{
+                width: "20px",
+                height: "20px",
+                backgroundColor: "rgba(75, 192, 192, 0.4)",
+                marginRight: "5px",
+                display: "inline-block",
+              }}
+            ></div>
+            <span>Count</span>
+          </div>
+        </div>
       </div>
     </div>
   );
