@@ -7,11 +7,11 @@ export const Histogram = (props) => {
     datasets: [
       {
         label: "Count",
-        backgroundColor: "rgba(75, 192, 192, 0.4)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(0, 0, 139, 0.4)", // Dark blue color
+        borderColor: "rgba(0, 0, 139, 1)", // Dark blue color
         borderWidth: 1,
-        hoverBackgroundColor: "rgba(75, 192, 192, 0.6)",
-        hoverBorderColor: "rgba(75, 192, 192, 1)",
+        hoverBackgroundColor: "rgba(0, 0, 139, 0.6)", // Dark blue color
+        hoverBorderColor: "rgba(0, 0, 139, 1)", // Dark blue color
         data: props.data,
       },
     ],
@@ -20,7 +20,7 @@ export const Histogram = (props) => {
   const chartOptions = {
     plugins: {
       legend: {
-        display: false, // Remove legend from the chart box
+        display: false,
       },
     },
     scales: {
@@ -30,10 +30,10 @@ export const Histogram = (props) => {
         title: {
           display: true,
           text: "Pitch",
-          color: "rgba(255, 255, 255, 1)", // Bright white color for x-axis title
+          color: "rgba(255, 255, 255, 1)",
         },
         ticks: {
-          color: "rgba(255, 255, 255, 1)", // Bright white color for x-axis ticks
+          color: "rgba(255, 255, 255, 1)",
         },
       },
       y: {
@@ -42,7 +42,7 @@ export const Histogram = (props) => {
         title: {
           display: true,
           text: "Count",
-          color: "rgba(255, 255, 255, 1)", // Bright white color for y-axis title
+          color: "rgba(255, 255, 255, 1)",
         },
         ticks: {
           callback: function (value, index, values) {
@@ -51,7 +51,7 @@ export const Histogram = (props) => {
             }
             return null;
           },
-          color: "rgba(255, 255, 255, 1)", // Bright white color for y-axis ticks
+          color: "rgba(255, 255, 255, 1)",
         },
       },
     },
@@ -60,25 +60,25 @@ export const Histogram = (props) => {
   return (
     <div
       style={{
-        width: "48vw", // 5/8 of 30vw
-        height: "30vw", // 4:6 aspect ratio for the inner chart box
+        width: "48vw",
+        height: "30vw",
         minWidth: "320px",
-        minHeight: "384px",
+        minHeight: "320px",
         backgroundColor: "grey",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        border: "2px solid #ccc", // Add border
-        borderRadius: "12px", // Add border radius
-        padding: "1px", // Add padding
-        marginBottom: "20px", // Add margin bottom for spacing
+        border: "2px solid #ccc",
+        borderRadius: "12px",
+        padding: "1px",
+        marginBottom: "0px",
       }}
     >
       <div
         style={{
           width: "100%",
-          height: "calc(1/8*100% - 2px)", // 1:8 aspect ratio for the upper title box
+          height: "calc(1/8*100% - 2px)",
           backgroundColor: "#ffffff20",
           padding: "10px",
           borderBottom: "2px solid #ccc",
@@ -87,32 +87,36 @@ export const Histogram = (props) => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3>{" "}
-        {/* Title Text */}
+        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3>
       </div>
       <div
         style={{
           width: "100%",
-          height: "calc(7/8*100% - 2px)", // 7:8 aspect ratio for the chart and legend box
+          height: "calc(7/8*100% - 2px)",
           display: "flex",
+          flex: "1",
         }}
       >
         <div
           style={{
-            width: "calc(6/8*100% - 2px)", // 5:8 aspect ratio for the chart box
+            width: "calc(6/8*100% - 2px)",
             height: "100%",
             padding: "5%",
+            justifyContent: "center",
+            display: "flex",
+            justifyContent: "center", 
+            alignItems: "center"
           }}
         >
           <Bar
             data={chartData}
             options={chartOptions}
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "100%", width: "100%"}}
           />
         </div>
         <div
           style={{
-            width: "calc(3/8*100% - 2px)", // 7:2 aspect ratio for the legend box
+            width: "calc(3/8*100% - 2px)",
             height: "100%",
             backgroundColor: "#ffffff20",
             padding: "10px",
@@ -121,15 +125,15 @@ export const Histogram = (props) => {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "flex-start",
-            fontSize: "14px", // Set a maximum font size
+            fontSize: "14px",
           }}
         >
-          <div style={{ marginBottom: "5px", color: "white" }}>
+          <div style={{ marginBottom: "5px", display: "flex", alignItems: "center"}}>
             <div
               style={{
                 width: "20px",
                 height: "20px",
-                backgroundColor: "rgba(75, 192, 192, 0.4)",
+                backgroundColor: "rgba(0, 0, 139, 0.4)", // Dark blue color
                 marginRight: "5px",
                 display: "inline-block",
               }}

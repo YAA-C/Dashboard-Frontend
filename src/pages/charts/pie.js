@@ -48,7 +48,7 @@ export const PieChart = (props) => {
         border: "2px solid #ccc",
         borderRadius: "12px",
         padding: "1px",
-        marginBottom: "20px",
+        marginBottom: "0px",
       }}
     >
       <div
@@ -72,6 +72,7 @@ export const PieChart = (props) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "stretch", // Make the legend box stretch vertically
+          flex: "1",
         }}
       >
         <div
@@ -100,11 +101,11 @@ export const PieChart = (props) => {
             overflow: "auto", // Enable scrolling
             scrollbarWidth: "thin", // Thin scrollbar
             scrollbarColor: "rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1)", // Scrollbar color
-            height: "118%", // Extend to the bottom
+            height: "100%", // Extend to the bottom
           }}
         >
           {props.labels.map((label, index) => (
-            <div key={index} style={{ marginBottom: "5px" }}>
+            <div key={index} style={{ marginBottom: "5px", display: "flex", alignItems: "center" }}>
               <div
                 style={{
                   width: "10px",

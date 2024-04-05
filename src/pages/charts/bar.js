@@ -13,7 +13,6 @@ export const BarChart = (props) => {
     labels: props.labels,
     datasets: [
       {
-        label: props.labels,
         data: props.data,
         backgroundColor: colorScale.map(color => chroma(color).alpha(0.6).css()), // Set background colors with transparency
         borderColor: colorScale.map(color => chroma(color).css()),
@@ -62,7 +61,7 @@ export const BarChart = (props) => {
         width: "48vw", // 5/8 of 30vw
         height: "30vw", // 5:8 aspect ratio of 30vw
         minWidth: "320px",
-        minHeight: "512px",
+        minHeight: "320px",
         backgroundColor: "grey",
         display: "flex",
         flexDirection: "column", 
@@ -71,7 +70,7 @@ export const BarChart = (props) => {
         border: "2px solid #ccc", // Add border
         borderRadius: "12px", // Add border radius
         padding: "1px", // Add padding
-        marginBottom: "20px", // Add margin bottom for spacing
+        marginBottom: "0px", // Add margin bottom for spacing
       }}
     >
       <div
@@ -95,7 +94,8 @@ export const BarChart = (props) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "stretch", // Make the legend box stretch vertically
-          flexDirection: "row"
+          flexDirection: "row",
+          flex: "1",
         }}
       >
         <div
@@ -128,12 +128,12 @@ export const BarChart = (props) => {
             overflow: "auto", // Enable scrolling
             scrollbarWidth: "thin", // Thin scrollbar
             scrollbarColor: "rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1)", // Scrollbar color
-            height: "118%", // Extend to the bottom
+            height: "100%", // Extend to the bottom 
           }}
         >
           {props.labels.map((label, index) => (
-            <div key={index} style={{ marginBottom: "5px" }}>
-              <div
+            <div key={index} style={{ marginBottom: "5px", display: "flex", alignItems: "center" }}>
+              <span
                 style={{
                   width: "10px",
                   height: "10px",
@@ -141,7 +141,8 @@ export const BarChart = (props) => {
                   marginRight: "5px",
                   display: "inline-block",
                 }}
-              ></div>
+              >
+              </span>
               <span>{label}</span>
             </div>
           ))}
