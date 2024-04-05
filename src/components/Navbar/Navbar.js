@@ -3,7 +3,7 @@ import { Logout } from "../Logout";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   const [user, setUser] = useState("USER");
 
   useEffect(() => {
@@ -22,9 +22,16 @@ export const Navbar = () => {
   return (
     <>
       <nav className="fixed-top nav-css bg-primary">
-        <h4 style={{ margin: "2vh" }}>
-          Welcome <span className="btn btn-success fw-bold">{user}</span>
+        <h4 style={{ margin: "2vh", color: "white" }} className="fw-bold">
+          <span className="btn btn-success fw-bold">Welcome | {user} </span>
         </h4>
+        <button
+          className="btn btn-light fw-bold"
+          style={{ margin: "2vh", fontSize: "2.5vh" }}
+        >
+          {props.title} section
+        </button>
+
         <div className="nav-item dropdown" style={{ margin: "2vh" }}>
           <Link
             to="/profile"

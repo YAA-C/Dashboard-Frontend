@@ -13,7 +13,7 @@ export const Logout = () => {
   };
   return (
     <>
-      <button className="btn btn-danger" onClick={logout}>
+      <button className="btn btn-danger fw-bold" onClick={logout}>
         Logout
       </button>
     </>
