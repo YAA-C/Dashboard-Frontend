@@ -71,7 +71,7 @@ export const Analysis = () => {
       <Navbar title="ANALYSIS" />
 
       <table
-        className="table table-bordered table-striped table-sm table-hover"
+        className="table table-bordered table-sm"
         style={{ marginTop: "12vh" }}
       >
         <thead>
@@ -89,8 +89,20 @@ export const Analysis = () => {
           {player.map((info) => {
             return (
               <tr key={info._id}>
-                <td>{info.steamid}</td>
-                <td>{info.playerName}</td>
+                <td className={`${
+                    info.isCheating === false
+                        ?"green"
+                      : "red"
+                  } `}>{info.steamid}</td>
+                <td
+                  className={`${
+                    info.isCheating === false
+                        ?"green"
+                      : "red"
+                  } `}
+                >
+                  {info.playerName}
+                </td>
               </tr>
             );
           })}
@@ -132,7 +144,7 @@ export const Analysis = () => {
           <PieChart
             labels={data.chartsData.r6Data?.labels}
             data={data.chartsData.r6Data?.data}
-            title=""
+            title="Report 6 : When Player could not see but shot landed on target "
           />
         </div>
 
@@ -140,6 +152,7 @@ export const Analysis = () => {
           <Histogram
             labels={data.chartsData.r7Data?.labels}
             data={data.chartsData.r7Data?.data}
+            title=" Report 7 : Where do players see vertically"
           />
         </div>
 
@@ -147,6 +160,7 @@ export const Analysis = () => {
           <BarChart
             labels={data.chartsData.r8Data?.labels}
             data={data.chartsData.r8Data?.data}
+            title=" Report 8 : Average Utility uses"
           />
         </div>
 
@@ -154,6 +168,7 @@ export const Analysis = () => {
           <PieChart
             labels={data.chartsData.r9Data.r9Ar.labels}
             data={data.chartsData.r9Data.r9Ar.data}
+            title="Report 9 : Do players play with scope on or off for ARs"
           />
         </div>
 
@@ -161,6 +176,7 @@ export const Analysis = () => {
           <PieChart
             labels={data.chartsData.r9Data.r9Sniper.labels}
             data={data.chartsData.r9Data.r9Sniper.data}
+            title="Report 10 : Do players play with scope on or off for SNIPERs"
           />
         </div>
 
@@ -168,6 +184,7 @@ export const Analysis = () => {
           <PieChart
             labels={data.chartsData.r10Data?.labels}
             data={data.chartsData.r10Data?.data}
+            title="Report 11 : Was Player blind during fights"
           />
         </div>
       </div>

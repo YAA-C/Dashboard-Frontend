@@ -112,10 +112,10 @@ td {
   text-align: center;
 }
 
-.red{
-  background-color: red;
+.red {
+  background: red !important;
 }
 
-.green{
-  background-color: greenyellow;
+.green {
+  background: rgb(149, 227, 149) !important;
 }
