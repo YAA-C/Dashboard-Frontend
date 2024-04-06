@@ -1,46 +1,92 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
-import { Logout } from "../../components/Logout";
+import { Navbar } from "../../components/Navbar/Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const [matches, setMatches] = useState([]);
+  const [dataAvail, setDataAvail] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/dashboard/getMatches", {
+        id: window.localStorage.getItem("userID"),
+      })
+      .then((res) => {
+        if (res.data.success) {
+          setDataAvail(true);
+          setMatches(res.data.found);
+        } else {
+          setDataAvail(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const displayCharts = (matchId) => {
+    navigate("/analysis", { state: { matchId } });
+  };
+
   return (
-      <>
-        <div className="main-box">
-      <nav className="fixed-top nav-css bg-primary">
-        <h4 style={{ margin: "2vh" }}>Welcome </h4>
-        {/* NAVBAR THINGS */}
-        <div className="nav-item dropdown" style={{ margin: "2vh" }}>
-          <a
-            className="nav-link dropdown-toggle"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i className="profile-size bi bi-person-circle"></i>
-          </a>
-          <ul className="dropdown-menu">
-            <li>
-              <Link to={"/profile"} className="dropdown-item">
-                <button className="btn btn-primary">profile</button>
-              </Link>
-            </li>
-            <li>
-              <div className="dropdown-item">
-                <Logout />
+    <>
+      <div>
+        <Navbar title="DASHBOARD" />
+
+        <div
+          style={{ height: "75vh", width: "100vw" }}
+          className="matchDisplay"
+        >
+          {dataAvail ? (
+            <>
+              <ul className="match-list">
+                {matches.map((match, index) => {
+                  let dateStr = match.createdAt;
+                  let dateObj = new Date(dateStr);
+
+                  let options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                  };
+                  let formattedDate = dateObj.toLocaleDateString(
+                    "en-US",
+                    options
+                  );
+
+                  return (
+                    <li key={index}>
+                      <span className="fw-bold">Match #{match._id} </span>
+                      <span className="btn btn-dark fw-bold">
+                        {formattedDate}
+                      </span>
+                      <button
+                        className="fw-bold"
+                        onClick={() => displayCharts(match._id)}
+                      >
+                        View Analysis
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            <>
+              <div>
+                <h1>No matches for this account found</h1>
               </div>
-            </li>
-          </ul>
+            </>
+          )}
         </div>
-        {/* NAVBAR THINGS */}
-      </nav>
-
-      <h3>User match 1</h3>
-      <Link to={"/analysis"} className="btn btn-warning fw-bold">
-        View Analysis
-      </Link>
-    </div>
-      </>
-
+      </div>
+    </>
   );
 };

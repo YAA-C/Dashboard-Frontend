@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "./LandingPage.css";
 import yaacs from './images/logo3.png'
@@ -16,7 +14,7 @@ export const LandingPage = () => {
 
             <span className="LandingPage-quote">ELIMINATE CHEATERS, ELEVATE FAIRPLAY</span>
             <div className="text-on-image">
-              <img style={{ height: 200, width: 400, padding: 15 }} src={yaacs} />
+              <img style={{ height: 200, width: 400, padding: 15 }} src={yaacs} alt="Background"/>
             </div>
             <div>
               <Link to={"/auth"}>
