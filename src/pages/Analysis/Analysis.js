@@ -70,7 +70,10 @@ export const Analysis = () => {
     <>
       <Navbar title="ANALYSIS" />
 
-      <table className="table table-bordered table-striped table-sm table-hover">
+      <table
+        className="table table-bordered table-striped table-sm table-hover"
+        style={{ marginTop: "12vh" }}
+      >
         <thead>
           <tr>
             <th className="sticky-header">
@@ -99,6 +102,7 @@ export const Analysis = () => {
           <BarChart
             labels={data.chartsData.r1Data?.labels}
             data={data.chartsData.r1Data?.data}
+            title="Report 1 : Most used Weapon"
           />
         </div>
 
@@ -106,6 +110,7 @@ export const Analysis = () => {
           <BarChart
             labels={data.chartsData.r2Data?.labels}
             data={data.chartsData.r2Data?.data}
+            title="Report 2 : Mostly targeted body part"
           />
         </div>
 
@@ -113,18 +118,21 @@ export const Analysis = () => {
           <PieChart
             labels={data.chartsData.r3Data?.labels}
             data={data.chartsData.r3Data?.data}
+            title="Report 3 : Most used Weapon Category"
           />
         </div>
         <div className="charts">
           <PieChart
             labels={data.chartsData.r4Data?.labels}
             data={data.chartsData.r4Data?.data}
+            title="Report 4 : Movement preferred during fights"
           />
         </div>
         <div className="charts">
           <PieChart
             labels={data.chartsData.r6Data?.labels}
             data={data.chartsData.r6Data?.data}
+            title=""
           />
         </div>
 

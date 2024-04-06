@@ -92,7 +92,7 @@ export const Histogram = (props) => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Histogram</h3>
+        <h3 style={{ margin: 0, color: "black" }}>{props.title}</h3>
       </div>
       <div
         style={{

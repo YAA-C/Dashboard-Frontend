@@ -85,7 +85,7 @@ export const BarChart = (props) => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0, color: "black" }}>Bar Chart</h3>{" "} {/* Title Text */}
+        <h3 style={{ margin: 0, color: "black" }}>{props.title}</h3>{" "} {/* Title Text */}
       </div>
       <div
         style={{

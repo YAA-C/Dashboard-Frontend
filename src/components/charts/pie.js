@@ -63,7 +63,7 @@ export const PieChart = (props) => {
           alignItems: "center",
         }}
       >
-        <h3 style={{ margin: 0 }}>Pie Chart</h3>
+        <h3 style={{ margin: 0 }}>{props.title}</h3>
       </div>
       <div
         style={{
