@@ -22,23 +22,32 @@ export const Analysis = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [player, setPlayer] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:3001/analysis/" + matchId)
       .then((res) => {
         setData(res.data);
-        console.log(res.data.chartsData.r1Data?.labels);
-        console.log(res.data.chartsData.r1Data?.data);
 
-        setLoading(false);
+        axios
+          .post("http://localhost:3001/analysis/getPlayers", {
+            id: matchId,
+          })
+          .then((res) => {
+            setPlayer(res.data.player.players);
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         setError("Error fetching data.");
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  }, [matchId]);
 
   if (loading) {
     return (
@@ -57,65 +66,101 @@ export const Analysis = () => {
     return <div>Error: {error}</div>;
   }
 
-  // const L = [
-  //   "m4a1",
-  //   "mp9",
-  //   "awp",
-  //   "famas",
-  //   "ak47",
-  //   "p90",
-  //   "aug",
-  //   "usp_silencer",
-  //   "deagle",
-  //   "m4a1_silencer",
-  //   "bizon",
-  //   "mp7",
-  //   "m249",
-  //   "ump45",
-  //   "ssg08",
-  //   "p250",
-  //   "scar20",
-  //   "hkp2000",
-  //   "negev",
-  //   "elite",
-  //   "glock",
-  //   "xm1014",
-  //   "galilar",
-  //   "mag7",
-  //   "nova",
-  //   "mac10",
-  //   "fiveseven",
-  //   "tec9",
-  //   "sg556",
-  //   "cz75a",
-  // ];
-
-  // const D = [
-  //   14468, 12077, 11941, 8270, 8073, 7416, 7191, 4623, 4436, 3713, 2912, 2627,
-  //   2307, 2302, 2250, 1923, 1827, 1806, 1404, 1350, 1213, 1171, 811, 711, 453,
-  //   359, 224, 196, 117, 66,
-  // ];
-
   return (
     <>
       <Navbar title="ANALYSIS" />
-      <div>
-        <div className="container">
-          <div className="charts">
-            {" "}
-            <BarChart
-              labels={data.chartsData.r1Data?.labels}
-              data={data.chartsData.r1Data?.data}
-            />
-          </div>
 
-          <div className="charts">
-            {" "}
-            <BarChart
-              labels={data.chartsData.r2Data?.labels}
-              data={data.chartsData.r2Data?.data}
-            />
-          </div>
+      <table className="table table-bordered table-striped table-sm table-hover">
+        <thead>
+          <tr>
+            <th className="sticky-header">
+              <center>Steam ID</center>
+            </th>
+            <th className="sticky-header">
+              <center>Player Name</center>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {player.map((info) => {
+            return (
+              <tr key={info._id}>
+                <td>{info.steamid}</td>
+                <td>{info.playerName}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <div className="container">
+        <div className="charts">
+          <BarChart
+            labels={data.chartsData.r1Data?.labels}
+            data={data.chartsData.r1Data?.data}
+          />
+        </div>
+
+        <div className="charts">
+          <BarChart
+            labels={data.chartsData.r2Data?.labels}
+            data={data.chartsData.r2Data?.data}
+          />
+        </div>
+
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r3Data?.labels}
+            data={data.chartsData.r3Data?.data}
+          />
+        </div>
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r4Data?.labels}
+            data={data.chartsData.r4Data?.data}
+          />
+        </div>
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r6Data?.labels}
+            data={data.chartsData.r6Data?.data}
+          />
+        </div>
+
+        <div className="charts">
+          <Histogram
+            labels={data.chartsData.r7Data?.labels}
+            data={data.chartsData.r7Data?.data}
+          />
+        </div>
+
+        <div className="charts">
+          <BarChart
+            labels={data.chartsData.r8Data?.labels}
+            data={data.chartsData.r8Data?.data}
+          />
+        </div>
+
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r9Data.r9Ar.labels}
+            data={data.chartsData.r9Data.r9Ar.data}
+          />
+        </div>
+
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r9Data.r9Sniper.labels}
+            data={data.chartsData.r9Data.r9Sniper.data}
+          />
+        </div>
+
+        <div className="charts">
+          <PieChart
+            labels={data.chartsData.r10Data?.labels}
+            data={data.chartsData.r10Data?.data}
+          />
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import chroma from "chroma-js"; // Import chroma-js library
 
 export const BarChart = (props) => {
-  console.log(props.labels)
+  // console.log(props.labels)
   const numSegments = props.labels.length;
 
   // Generate a color scale with n distinct colors

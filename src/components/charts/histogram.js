@@ -46,7 +46,12 @@ export const Histogram = (props) => {
         },
         ticks: {
           callback: function (value, index, values) {
-            if (value === 1 || value === 10 || value === 100 || value === 1000) {
+            if (
+              value === 1 ||
+              value === 10 ||
+              value === 100 ||
+              value === 1000
+            ) {
               return value;
             }
             return null;
@@ -104,14 +109,13 @@ export const Histogram = (props) => {
             padding: "5%",
             justifyContent: "center",
             display: "flex",
-            justifyContent: "center", 
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Bar
             data={chartData}
             options={chartOptions}
-            style={{ height: "100%", width: "100%"}}
+            style={{ height: "100%", width: "100%" }}
           />
         </div>
         <div
@@ -128,7 +132,13 @@ export const Histogram = (props) => {
             fontSize: "14px",
           }}
         >
-          <div style={{ marginBottom: "5px", display: "flex", alignItems: "center"}}>
+          <div
+            style={{
+              marginBottom: "5px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             <div
               style={{
                 width: "20px",
