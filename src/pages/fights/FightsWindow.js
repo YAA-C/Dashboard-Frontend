@@ -143,28 +143,44 @@ export const PlayerTargetAnimation = ({ data }) => {
           fill="red"
         />
       </svg>
-      <div className="rutu_controls">
+      <div className="rutu_controls" style={{ marginTop: "2vh" }}>
         <button
-          style={{ fontSize: "3vw", overflow: "hidden" }}
+          style={{ fontSize: "2.5vh", overflow: "hidden" }}
           onClick={goToFirstFrame}
+          className="btn btn-danger"
         >
-          |&lt;&lt;
+          1st frame
         </button>
-        <button style={{ fontSize: "3vw" }} onClick={goToPreviousFrame}>
-          &lt;&lt;
+        <button
+          style={{ fontSize: "2.5vh" }}
+          onClick={goToPreviousFrame}
+          className="btn btn-primary"
+        >
+          prev
         </button>
-        <button style={{ fontSize: "3vw" }} onClick={togglePlayPause}>
-          {isPlaying ? "||" : ">"}
+        <button
+          style={{ fontSize: "2.5vh" }}
+          onClick={togglePlayPause}
+          className="btn btn-success"
+        >
+          {isPlaying ? "Pause" : "Play"}
         </button>
-        <button style={{ fontSize: "3vw" }} onClick={goToNextFrame}>
-          &gt;&gt;
+        <button
+          style={{ fontSize: "2.5vh" }}
+          onClick={goToNextFrame}
+          className="btn btn-primary"
+        >
+          next
         </button>
-        <button style={{ fontSize: "3vw" }} onClick={goToLastFrame}>
-          &gt;&gt;|
+
+        <button
+          style={{ fontSize: "2.5vh" }}
+          onClick={goToLastFrame}
+          className="btn btn-danger"
+        >
+          last frame
         </button>
       </div>
     </div>
   );
 };
-
-

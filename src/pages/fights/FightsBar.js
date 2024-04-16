@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { PlayerTargetAnimation } from "./FightsWindow";
 import { useState, useEffect } from "react";
 import Dropdown from "../../components/dropdown";
+import { Navbar } from "../../components/Navbar/Navbar";
 
 export const FightsBar = () => {
   const match = useLocation();
@@ -53,7 +54,10 @@ export const FightsBar = () => {
 
   return (
     <>
-      <Dropdown total={total} onSelect={handleDropdownChange}/>
+      <Navbar title="Fights Analysis" />
+      <center style={{ marginTop: "10vh" }}>
+        <Dropdown total={total} onSelect={handleDropdownChange} />
+      </center>
       <PlayerTargetAnimation data={data} />
     </>
   );
