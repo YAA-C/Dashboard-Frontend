@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Analysis.css";
 
@@ -23,6 +23,8 @@ export const Analysis = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [player, setPlayer] = useState([]);
+
+  const navigate  = useNavigate();
 
   useEffect(() => {
     axios
@@ -89,17 +91,13 @@ export const Analysis = () => {
           {player.map((info) => {
             return (
               <tr key={info._id}>
-                <td className={`${
-                    info.isCheating === false
-                        ?"green"
-                      : "red"
-                  } `}>{info.steamid}</td>
                 <td
-                  className={`${
-                    info.isCheating === false
-                        ?"green"
-                      : "red"
-                  } `}
+                  className={`${info.isCheating === false ? "green" : "red"} `}
+                >
+                  {info.steamid}
+                </td>
+                <td
+                  className={`${info.isCheating === false ? "green" : "red"} `}
                 >
                   {info.playerName}
                 </td>
@@ -110,6 +108,15 @@ export const Analysis = () => {
       </table>
 
       <div className="container">
+        <h2>Fights where cheating was detected</h2>
+        <button
+          className="btn btn-success fw-bold"
+          style={{ marginLeft: "2.5vw" }}
+          onClick={()=>navigate("/fightsAnalysis", { state: { matchId } })}
+        >
+          Analyze Fights
+        </button>
+
         <div className="charts">
           <BarChart
             labels={data.chartsData.r1Data?.labels}
