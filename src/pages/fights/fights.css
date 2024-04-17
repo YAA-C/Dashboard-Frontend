@@ -1,0 +1,53 @@
+.rutu_chart {
+  width: 30vw;
+  height: 35vw;
+  margin: 20px;
+  border: 2px solid black;
+}
+svg {
+  border-bottom: 2px solid black;
+  width: 30vw;
+  height: 30vw;
+}
+
+.rutu_controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* LOADER */
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #f0f0f0;
+  text-align: center;
+  flex-direction: column;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* LOADER */

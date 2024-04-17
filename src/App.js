@@ -14,6 +14,7 @@ import { Auth } from "./pages/Auth/Auth";
 import { Profile } from "./pages/profile/profile";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Analysis } from "./pages/Analysis/Analysis";
+import { FightsBar } from "./pages/fights/FightsBar";
 
 function App() {
   return (
@@ -45,6 +46,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Analysis />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fightsAnalysis"
+          element={
+            <ProtectedRoute>
+              <FightsBar />
             </ProtectedRoute>
           }
         />
